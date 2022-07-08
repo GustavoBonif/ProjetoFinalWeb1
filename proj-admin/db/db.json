@@ -56,12 +56,12 @@
   "users": [
     {
       "id": 1,
-      "name": "Top Gun!",
+      "name": "Admin",
       "userType": 0
     },
     {
       "id": 2,
-      "name": "Novo Filme",
+      "name": "Comum",
       "userType": 1
     }
   ]

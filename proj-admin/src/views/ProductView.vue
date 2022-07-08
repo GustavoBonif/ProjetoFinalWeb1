@@ -61,7 +61,7 @@ export default {
 };
 </script>
 <template>
-  <h1>Cadastro de Produtos</h1>
+  <h1>Cadastro de Livros</h1>
   <div class="product-form">
     <input type="text" v-model="currentProduct.name" />
     <select v-model="currentProduct.categoryId">

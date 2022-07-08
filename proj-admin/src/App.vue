@@ -4,9 +4,9 @@ import { RouterLink, RouterView } from "vue-router";
 
 <template>
   <header>
-    <RouterLink to="/">Home</RouterLink> |
-    <RouterLink to="/categorias">Categorias</RouterLink> |
-    <RouterLink to="/produtos">Produtos</RouterLink>
+    <RouterLink to="/" class="header-link">Home</RouterLink> |
+    <RouterLink to="/categorias" class="header-link">Categorias</RouterLink> |
+    <RouterLink to="/produtos" class="header-link">Produtos</RouterLink>
   </header>
   <main>
     <RouterView />
@@ -14,7 +14,7 @@ import { RouterLink, RouterView } from "vue-router";
 </template>
 
 <style>
-@import "@/assets/base.css";
+/* @import "@/assets/base.css"; */
 
 #app {
   height: 100vh;
@@ -22,7 +22,7 @@ import { RouterLink, RouterView } from "vue-router";
 
 header {
   height: 10%;
-  background-color: rgb(54, 54, 109);
+  background-color: #4E5166;
   color: whitesmoke;
   font-size: 1.5em;
   display: flex;
