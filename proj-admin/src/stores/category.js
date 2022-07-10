@@ -16,7 +16,7 @@ export const useCategoryStore = defineStore({
         console.error(e);
         if (e.response.status === 404)
           return Promise.reject(e.response.statusText);
-        return Promise.reject("Erro desconhecido ao consultar 'Catgory'");
+        return Promise.reject("Erro desconhecido ao consultar 'Category'");
       }
     },
     async addCategory(category) {
