@@ -1,59 +1,63 @@
 <script>
 import { mapState, mapStores, mapActions } from "pinia";
-import { useProductStore } from "@/stores/product";
+import { useBookStore } from "@/stores/book";
 import { useCategoryStore } from "@/stores/category";
+import { useAuthorStore } from "@/stores/author";
 
 export default {
   data() {
     return {
-      currentProduct: {
+      currentBook: {
         id: "",
         name: "",
         categoryId: "",
-        category: {},
+        authorId: "",
       },
       editing: false,
     };
   },
   computed: {
-    ...mapStores(useProductStore),
-    ...mapState(useProductStore, ["products"]),
+    ...mapStores(useBookStore),
+    ...mapState(useBookStore, ["books"]),
     ...mapState(useCategoryStore, ["categories"]),
+    ...mapState(useAuthorStore, ["authors"]),
   },
   methods: {
-    ...mapActions(useProductStore, [
-      "getAllProducts",
-      "saveProduct",
-      "deleteProduct",
+    ...mapActions(useBookStore, [
+      "getAllBooks",
+      "saveBook",
+      "deleteBook",
     ]),
     ...mapActions(useCategoryStore, ["getAllCategories"]),
+    ...mapActions(useAuthorStore, ["getAllAuthors"]),
     async save() {
       try {
-        const msg = await this.saveProduct(this.currentProduct);
+        const msg = await this.saveBook(this.currentBook);
         alert(msg);
         this.editing = false;
-        this.currentProduct = {};
+        this.currentBook = {};
       } catch (e) {
         alert("Ooops! Algo de errado!");
       }
     },
-    async deleteItem(product_id) {
+    async deleteItem(book_id) {
       try {
-        await this.deleteProduct(product_id);
+        await this.deleteBook(book_id);
         alert("Item excluído com sucesso.");
       } catch (e) {
         alert(e);
       }
     },
-    prepareToUpdate(product) {
-      Object.assign(this.currentProduct, product);
+    prepareToUpdate(book) {
+      Object.assign(this.currentBook, book);
       this.editing = true;
     },
   },
   async mounted() {
     try {
       await this.getAllCategories();
-      await this.getAllProducts();
+      await this.getAllAuthors();
+      await this.getAllBooks();
     } catch (e) {
       alert(e);
     }
@@ -62,9 +66,9 @@ export default {
 </script>
 <template>
   <h1>Cadastro de Livros</h1>
-  <div class="product-form">
-    <input type="text" v-model="currentProduct.name" />
-    <select v-model="currentProduct.categoryId">
+  <div class="book-form">
+    <input type="text" v-model="currentBook.name" />
+    <select v-model="currentBook.categoryId">
       <option
         v-for="category in categories"
         :value="category.id"
@@ -73,11 +77,20 @@ export default {
         {{ category.description }}
       </option>
     </select>
+    <select v-model="currentBook.authorId">
+      <option
+        v-for="author in authors"
+        :value="author.id"
+        :key="author.id"
+      >
+        {{ author.name }}
+      </option>
+    </select>
     <button @click="save">
       {{ editing ? "Salvar" : "Adicionar" }}
     </button>
   </div>
-  <div class="product-list">
+  <div class="book-list">
     <table class="table">
       <thead>
         <tr>
@@ -85,10 +98,13 @@ export default {
             <span> <h2>ID</h2> </span>
           </th>
           <th class="text-left">
-            <span> <h2>Descrição</h2> </span>
+            <span> <h2>Título</h2> </span>
           </th>
           <th class="text-left">
-            <span> <h2>Category</h2> </span>
+            <span> <h2>Categoria</h2> </span>
+          </th>
+          <th class="text-left">
+            <span> <h2>Autor</h2> </span>
           </th>
           <th class="text-left">
             <span> <h2>Ações</h2> </span>
@@ -96,13 +112,14 @@ export default {
         </tr>
       </thead>
       <tbody>
-        <tr v-for="product of products" :key="product.id">
-          <td>{{ product.id }}</td>
-          <td>{{ product.name }}</td>
-          <td>{{ product.category.description }}</td>
+        <tr v-for="book of books" :key="book.id">
+          <td>{{ book.id }}</td>
+          <td>{{ book.name }}</td>
+          <td>{{ book.category.description }}</td>
+          <td>{{ book.author.name }}</td>
           <td>
-            <button @click="prepareToUpdate(product)">Update</button>
-            <button @click="deleteItem(product.id)">Delete</button>
+            <button @click="prepareToUpdate(book)">Update</button>
+            <button @click="deleteItem(book.id)">Delete</button>
           </td>
         </tr>
       </tbody>
@@ -111,8 +128,8 @@ export default {
 </template>
 
 <style scoped>
-.product-form input {
-  width: 40%;
+.book-form input {
+  width: 30%;
   height: 40px;
   border-radius: 20px;
   border: 1px solid gray;
@@ -120,8 +137,8 @@ export default {
   font-size: 1.2em;
 }
 
-.product-form select {
-  width: 30%;
+.book-form select {
+  width: 20%;
   height: 40px;
   border-radius: 20px;
   border: 1px solid gray;
@@ -130,7 +147,7 @@ export default {
   margin-left: 1%;
 }
 
-.product-form button {
+.book-form button {
   height: 35px;
   width: 20%;
   margin-left: 2%;
@@ -141,8 +158,8 @@ export default {
   border: 0;
 }
 
-.product-list,
-.product-form {
+.book-list,
+.book-form {
   margin: 3% auto;
   width: 70%;
 }

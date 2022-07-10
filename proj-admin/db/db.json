@@ -27,14 +27,6 @@
     {
       "description": "Luta",
       "id": 15
-    },
-    {
-      "id": 16,
-      "description": "Nova"
-    },
-    {
-      "id": 17,
-      "description": "teste"
     }
   ],
   "genres": [
@@ -43,24 +35,28 @@
       "description": "Teste"
     }
   ],
-  "products": [
-    {
-      "id": 1,
-      "name": "Top Gun!",
-      "categoryId": 3,
-      "genreId": 1
-    },
-    {
-      "id": 2,
-      "name": "Novo Filme",
-      "categoryId": 11,
-      "genreId": 1
-    },
+  "books": [
     {
       "id": 3,
-      "name": "kung fu panda",
-      "categoryId": 15,
+      "name": "O rei do inverno",
+      "categoryId": 3,
       "category": {}
+    },
+    {
+      "id": 4,
+      "name": "O inimigo de deus",
+      "categoryId": 3
+    },
+    {
+      "id": 5,
+      "name": "teste de livro 2",
+      "categoryId": 1
+    },
+    {
+      "id": 6,
+      "name": "livro",
+      "categoryId": 12,
+      "authorId": 2
     }
   ],
   "authors": [
@@ -75,6 +71,10 @@
     {
       "id": 3,
       "name": "Ernest Cline"
+    },
+    {
+      "id": 4,
+      "name": "teste"
     }
   ],
   "users": [
