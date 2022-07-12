@@ -24,6 +24,11 @@ const router = createRouter({
       name: "author",
       component: () => import("../views/AuthorView.vue"),
     },
+    {
+      path: "/editoras",
+      name: "publisher",
+      component: () => import("../views/PublisherView.vue"),
+    },
   ],
 });
 

@@ -2,6 +2,7 @@
 import { mapState, mapStores, mapActions } from "pinia";
 import { useBookStore } from "@/stores/book";
 import { useCategoryStore } from "@/stores/category";
+import { usePublisherStore } from "@/stores/publisher";
 import { useAuthorStore } from "@/stores/author";
 
 export default {
@@ -12,6 +13,7 @@ export default {
         name: "",
         categoryId: "",
         authorId: "",
+        publisherId: "",
       },
       editing: false,
     };
@@ -21,6 +23,7 @@ export default {
     ...mapState(useBookStore, ["books"]),
     ...mapState(useCategoryStore, ["categories"]),
     ...mapState(useAuthorStore, ["authors"]),
+    ...mapState(usePublisherStore, ["publishers"]),
   },
   methods: {
     ...mapActions(useBookStore, [
@@ -30,6 +33,7 @@ export default {
     ]),
     ...mapActions(useCategoryStore, ["getAllCategories"]),
     ...mapActions(useAuthorStore, ["getAllAuthors"]),
+    ...mapActions(usePublisherStore, ["getAllPublishers"]),
     async save() {
       try {
         const msg = await this.saveBook(this.currentBook);
@@ -57,6 +61,7 @@ export default {
     try {
       await this.getAllCategories();
       await this.getAllAuthors();
+      await this.getAllPublishers();
       await this.getAllBooks();
     } catch (e) {
       alert(e);
@@ -86,6 +91,15 @@ export default {
         {{ author.name }}
       </option>
     </select>
+    <select v-model="currentBook.publisherId">
+      <option
+        v-for="publisher in publishers"
+        :value="publisher.id"
+        :key="publisher.id"
+      >
+        {{ publisher.description }}
+      </option>
+    </select>
     <button @click="save">
       {{ editing ? "Salvar" : "Adicionar" }}
     </button>
@@ -107,6 +121,9 @@ export default {
             <span> <h2>Autor</h2> </span>
           </th>
           <th class="text-left">
+            <span> <h2>Editora</h2> </span>
+          </th>
+          <th class="text-left">
             <span> <h2>Ações</h2> </span>
           </th>
         </tr>
@@ -115,8 +132,9 @@ export default {
         <tr v-for="book of books" :key="book.id">
           <td>{{ book.id }}</td>
           <td>{{ book.name }}</td>
-          <td>{{ book.category.description }}</td>
           <td>{{ book.author.name }}</td>
+          <td>{{ book.publisher.description }}</td>
+          <td>{{ book.category.description }}</td>
           <td>
             <button @click="prepareToUpdate(book)">Update</button>
             <button @click="deleteItem(book.id)">Delete</button>
