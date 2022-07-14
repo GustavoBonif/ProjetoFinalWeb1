@@ -57,21 +57,21 @@ export default {
       this.editing = true;
     },
   },
-  async mounted() {
-    try {
-      await this.getAllCategories();
-      await this.getAllAuthors();
-      await this.getAllPublishers();
-      await this.getAllBooks();
-    } catch (e) {
-      alert(e);
-    }
-  },
+  // async mounted() {
+  //   try {
+  //     await this.getAllCategories();
+  //     await this.getAllAuthors();
+  //     await this.getAllPublishers();
+  //     await this.getAllBooks();
+  //   } catch (e) {
+  //     alert(e);
+  //   }
+  // },
 };
 </script>
 <template>
   <h1>Cadastro de Livros</h1>
-  <div class="book-form">
+  <!-- <div class="book-form">
     <input type="text" v-model="currentBook.name" />
     <select v-model="currentBook.categoryId">
       <option
@@ -132,9 +132,9 @@ export default {
         <tr v-for="book of books" :key="book.id">
           <td>{{ book.id }}</td>
           <td>{{ book.name }}</td>
-          <td>{{ book.author.name }}</td>
-          <td>{{ book.publisher.description }}</td>
-          <td>{{ book.category.description }}</td>
+          <td v-if="book.category">{{ book.category.description }}</td>
+          <td v-if="book.author">{{ book.author.name }}</td>
+          <td v-if="book.publisher">{{ book.publisher.description }}</td>
           <td>
             <button @click="prepareToUpdate(book)">Update</button>
             <button @click="deleteItem(book.id)">Delete</button>
@@ -142,68 +142,5 @@ export default {
         </tr>
       </tbody>
     </table>
-  </div>
+  </div> -->
 </template>
-
-<style scoped>
-.book-form input {
-  width: 30%;
-  height: 40px;
-  border-radius: 20px;
-  border: 1px solid gray;
-  padding-left: 20px;
-  font-size: 1.2em;
-}
-
-.book-form select {
-  width: 20%;
-  height: 40px;
-  border-radius: 20px;
-  border: 1px solid gray;
-  padding-left: 20px;
-  font-size: 1.2em;
-  margin-left: 1%;
-}
-
-.book-form button {
-  height: 35px;
-  width: 20%;
-  margin-left: 2%;
-  background-color: rgb(63, 63, 125);
-  color: whitesmoke;
-  font-size: 1.2em;
-  border-radius: 20px;
-  border: 0;
-}
-
-.book-list,
-.book-form {
-  margin: 3% auto;
-  width: 70%;
-}
-table {
-  /* display: table; */
-  border-collapse: separate;
-  border-spacing: 2px;
-  border-color: gray;
-  width: 100%;
-}
-
-th {
-  border-bottom: 2px solid #444;
-  text-align: left;
-}
-
-td {
-  padding: 10px;
-}
-
-thead tr {
-  background-color: #444;
-  color: whitesmoke;
-}
-
-tbody tr:nth-child(odd) {
-  background-color: #c3c3c3;
-}
-</style>

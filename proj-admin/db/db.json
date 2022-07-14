@@ -113,6 +113,13 @@
         "id": 1,
         "description": "Aurora teste"
       }
+    },
+    {
+      "id": 10,
+      "name": "Livro legal",
+      "categoryId": 11,
+      "authorId": 3,
+      "publisherId": 2
     }
   ],
   "authors": [
@@ -148,7 +155,7 @@
   "publishers": [
     {
       "id": 1,
-      "description": "Aurora teste"
+      "description": "Aurora teste 123"
     },
     {
       "id": 2,
