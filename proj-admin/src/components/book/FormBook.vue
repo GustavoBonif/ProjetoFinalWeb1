@@ -4,13 +4,13 @@ import { usePublisherStore } from "@/stores/publisher";
 
 export default {
   props: {
-    currentPublisher: {
+    currentBook: {
       type: Object,
     },
   },
   data() {
     return {
-      publisher: this.currentPublisher,
+      book: this.currentBook,
     };
   },
   methods: {
