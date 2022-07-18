@@ -1,5 +1,5 @@
 {
-  "name": "proj-admin",
+  "name": "proj-cliente",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
