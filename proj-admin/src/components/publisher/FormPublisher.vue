@@ -22,6 +22,7 @@ export default {
         Object.assign(this.publisher, {
           id: "",
           description: "",
+          site: "",
         });
       } catch (e) {
         alert("Ooops! Algo de errado!");
@@ -32,37 +33,36 @@ export default {
 </script>
 
 <template>
-  <div class="publisher-form">
-    <input type="text" v-model="publisher.description" />
-    <button @click="save">
-      {{ currentPublisher.id !== "" ? "Salvar" : "Adicionar" }}
-    </button>
+  <div class="form-card">   
+    <div class="form-description">
+      <h1>{{ currentPublisher.id !== "" ? "Edição " : "Cadastro" }} de Editoras</h1>
+    </div>
+    <div class="form-area">
+      <div class="description-input-area">
+        <label for="publisher-description">Nome</label>
+        <input name="publisher-description" type="text" v-model="currentPublisher.description" />
+      </div>
+
+      <div class="site-input-area">
+        <label for="publisher-site">Site</label>
+        <input name="publisher-site" type="text" v-model="currentPublisher.site" />
+      </div>
+
+      <button @click="save" class="form-submit">
+        {{ currentPublisher.id !== "" ? "Salvar" : "Adicionar" }}
+      </button>
+    </div>
   </div>
 </template>
 
 <style scoped>
-.publisher-form input {
-  width: 75%;
-  height: 40px;
-  border-radius: 20px;
-  border: 1px solid gray;
-  padding-left: 20px;
-  font-size: 1.2em;
+
+.description-input-area,
+.site-input-area {
+  width: 96%;
+  margin-left: 1.8%;
+  display: flex;
+  flex-direction: column;
 }
 
-.publisher-form button {
-  height: 35px;
-  width: 20%;
-  margin-left: 2%;
-  background-color: rgb(63, 63, 125);
-  color: whitesmoke;
-  font-size: 1.2em;
-  border-radius: 20px;
-  border: 0;
-}
-
-.publisher-form {
-  margin: 3% auto;
-  width: 70%;
-}
 </style>

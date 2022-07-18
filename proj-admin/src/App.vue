@@ -5,7 +5,6 @@ import { RouterLink, RouterView } from "vue-router";
 <template>
   <header>
     <div class="header-logo">
-      [logo]
     </div>
     <nav>
       <RouterLink to="/" class="header-link">Home</RouterLink>
@@ -14,8 +13,8 @@ import { RouterLink, RouterView } from "vue-router";
       <RouterLink to="/editoras" class="header-link">Editoras</RouterLink>
       <RouterLink to="/livros" class="header-link">Livros</RouterLink> 
     </nav>
-    <div class="header-about">
-      Sobre
+    <div class="header-title">
+      Sistema de <br> Administração
     </div>
   </header>
   <main>
@@ -24,7 +23,6 @@ import { RouterLink, RouterView } from "vue-router";
 </template>
 
 <style>
-/* @import "@/assets/base.css"; */
 
 #app {
   height: 100vh;
@@ -54,6 +52,19 @@ nav {
 .header-link:hover {
     background: #7C90A0;
     border-radius: 15px;
+}
+
+.header-logo {
+  height: 100%;
+  width: 100px;
+  background-image: url("../src/assets/img/logo-livraria.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.header-title {
+  text-align: center;
 }
 
 main {

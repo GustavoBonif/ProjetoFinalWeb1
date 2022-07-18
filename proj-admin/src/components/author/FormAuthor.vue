@@ -32,15 +32,32 @@ export default {
 </script>
 
 <template>
-  <div class="author-form">
-    <input type="text" v-model="author.name" />
-    <button @click="save">
-      {{ currentAuthor.id !== "" ? "Salvar" : "Adicionar" }}
-    </button>
+  <div class="form-card">   
+    <div class="form-description">
+      <h1>{{ currentAuthor.id !== "" ? "Edição " : "Cadastro" }} de Autores</h1>
+    </div>
+    <div class="form-area">
+      <div class="description-input-area">
+        <label for="author-description">Nome</label>
+        <input name="author-description" type="text" v-model="currentAuthor.name" />
+      </div>
+      <button @click="save" class="form-submit">
+        {{ currentAuthor.id !== "" ? "Salvar" : "Adicionar" }}
+      </button>
+    </div>
   </div>
 </template>
 
 <style scoped>
+
+.description-input-area,
+.site-input-area {
+  width: 96%;
+  margin-left: 1.8%;
+  display: flex;
+  flex-direction: column;
+}
+
 .author-form input {
   width: 75%;
   height: 40px;

@@ -8,7 +8,8 @@ export default {
     return {
       columns: [
         { label: "ID", field: "id" },
-        { label: "Descrição", field: "description" },
+        { label: "Nome", field: "description" },
+        { label: "Site", field: "site" },
       ],
     };
   },

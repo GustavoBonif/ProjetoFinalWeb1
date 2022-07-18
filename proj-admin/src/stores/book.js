@@ -12,8 +12,6 @@ export const useBookStore = defineStore({
         const { data } = await axios.get(
           "http://localhost:4000/books?expand=category&expand=author&expand=publisher"
         );
-
-        console.info(data[0].author.name);
         this.books = data;
         return Promise.resolve();
       } catch (e) {
@@ -52,9 +50,6 @@ export const useBookStore = defineStore({
       }
     },
     async saveBook(book) {
-
-      console.info(book);
-
       if (book.id) {
         return await this.updateBook(book);
       } else {

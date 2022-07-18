@@ -23,10 +23,6 @@
     {
       "id": 14,
       "description": "Romance"
-    },
-    {
-      "description": "Luta",
-      "id": 15
     }
   ],
   "genres": [
@@ -49,77 +45,13 @@
     },
     {
       "id": 4,
-      "name": "O inimigo de deus",
-      "categoryId": 3,
-      "publisherId": 1,
-      "authorId": 2,
-      "publisher": {
-        "id": 1,
-        "description": "Aurora teste"
-      }
-    },
-    {
-      "id": 5,
-      "name": "outro livro",
-      "categoryId": 14,
-      "publisherId": 1,
-      "authorId": 3,
-      "author": {
-        "id": 3,
-        "name": "Ernest Cline"
-      },
-      "publisher": {
-        "id": 1,
-        "description": "Aurora teste"
-      }
-    },
-    {
-      "id": 6,
-      "name": "livro",
-      "categoryId": 12,
-      "publisherId": 1,
-      "authorId": 2,
-      "publisher": {
-        "id": 1,
-        "description": "Aurora teste"
-      }
-    },
-    {
-      "id": 7,
-      "name": "novo livro de teste1",
-      "categoryId": 14,
+      "name": "teste",
+      "categoryId": 1,
       "authorId": 1,
       "publisherId": 2,
-      "publisher": {
-        "id": 1,
-        "description": "Aurora teste"
-      },
-      "author": {
-        "id": 1,
-        "name": "JRR Tolkien"
-      }
-    },
-    {
-      "id": 8,
-      "name": "teste editora",
-      "categoryId": 13,
-      "authorId": 3,
-      "publisherId": 2,
-      "author": {
-        "id": 3,
-        "name": "Ernest Cline"
-      },
-      "publisher": {
-        "id": 1,
-        "description": "Aurora teste"
-      }
-    },
-    {
-      "id": 10,
-      "name": "Livro legal",
-      "categoryId": 11,
-      "authorId": 3,
-      "publisherId": 2
+      "price": "12,15",
+      "isbn": "123",
+      "quantity": 22
     }
   ],
   "authors": [
@@ -155,11 +87,18 @@
   "publishers": [
     {
       "id": 1,
-      "description": "Aurora teste 123"
+      "description": "Companhia das letras",
+      "site": "https://www.companhiadasletras.com.br/"
     },
     {
       "id": 2,
-      "description": "Saraiva"
+      "description": "Aleph",
+      "site": "https://editoraaleph.com.br/"
+    },
+    {
+      "id": 3,
+      "description": "nova",
+      "site": "https://editoraaleph.com.br/"
     }
   ]
 }
