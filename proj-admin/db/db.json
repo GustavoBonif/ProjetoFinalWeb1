@@ -36,11 +36,19 @@
       "id": 3,
       "name": "O rei do inferno",
       "categoryId": 3,
-      "publisherId": 1,
       "authorId": 2,
+      "publisherId": 1,
+      "price": "49,90",
+      "isbn": "",
+      "quantity": "",
       "author": {
         "id": 2,
         "name": "William Gibson"
+      },
+      "publisher": {
+        "id": 1,
+        "description": "Companhia das letras",
+        "site": "https://www.companhiadasletras.com.br/"
       }
     },
     {
@@ -52,6 +60,16 @@
       "price": "12,15",
       "isbn": "123",
       "quantity": 22
+    },
+    {
+      "id": 5,
+      "name": "Neuromancer",
+      "categoryId": 12,
+      "authorId": 2,
+      "publisherId": 2,
+      "price": "29,90",
+      "isbn": "123-345-654",
+      "quantity": 5
     }
   ],
   "authors": [

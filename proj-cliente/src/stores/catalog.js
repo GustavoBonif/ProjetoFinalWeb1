@@ -4,24 +4,24 @@ import axios from "axios";
 export const useCatalogStore = defineStore({
   id: "catalog",
   state: () => ({
-    categories: [],
+    catalog: [],
   }),
   actions: {
     async getCatalog() {
-        try {
-          const { data } = await axios.get(
-            "http://localhost:4000/books?expand=category&expand=author&expand=publisher"
-          );
-          this.books = data;
-          console.info(data);
-          return Promise.resolve();
-        } catch (e) {
-          console.error(e);
-          if (e.response.status === 404)
-            return Promise.reject(e.response.statusText);
-          return Promise.reject("Erro desconhecido ao consultar 'Book'");
-        }
-      },
+      try {
+        const { data } = await axios.get(
+          "http://localhost:4000/books?expand=category&expand=author&expand=publisher"
+        );
+        this.catalog = data;
+        console.info(data);
+        return Promise.resolve();
+      } catch (e) {
+        console.error(e);
+        if (e.response.status === 404)
+          return Promise.reject(e.response.statusText);
+        return Promise.reject("Erro desconhecido ao consultar 'Book'");
+      }
+    },
     async addCategory(category) {
       try {
         const { data } = await axios.post(

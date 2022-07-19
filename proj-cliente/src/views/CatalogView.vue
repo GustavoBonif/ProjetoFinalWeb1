@@ -1,12 +1,18 @@
 <script>
+import { mapState, mapStores, mapActions } from "pinia";
+import { useCatalogStore } from "@/stores/catalog";
+
 export default {
+    computed: {
+        ...mapStores(useCatalogStore),
+        ...mapState(useCatalogStore, ["catalog"]),
+    },
     methods: {
         ...mapActions(useCatalogStore, [
         "getCatalog",
         // "saveBook",
         // "deleteBook",
         ]),
-        ...mapActions(useCatalogStore, ["getCatalog"]),
         // ...mapActions(useAuthorStore, ["getAllAuthors"]),
         // ...mapActions(usePublisherStore, ["getAllPublishers"]),
         // async save() {
@@ -27,54 +33,33 @@ export default {
         //         alert(e);
         //     }
         // },
-        prepareToUpdate(book) {
-        Object.assign(this.currentBook, book);
-        this.editing = true;
-        },
+        // prepareToUpdate(book) {
+        // Object.assign(this.currentBook, book);
+        // this.editing = true;
+        // },
     },
+    async mounted() {
+        try {
+            await this.getCatalog();
+        } catch (e) {
+            alert(e);
+        }
+    }
 }
 </script>
 
 <template>
     <section class="container">
-        <div class="item">
+        <div v-for="catalogItem in catalog" :key="catalogItem.id" class="item">
             <div class="book">
 
             </div>
             <div class="description">
-                <h3>Os miseraveis</h3>
-                <h5>Autor: Victor Hugo</h5>
-                <h5>Gênero: Victor Hugo</h5>
-            </div>
-        </div>
-        <div class="item">
-            <div class="book">
-
-            </div>
-            <div class="description">
-                <h3>Os miseraveis</h3>
-                <h5>Autor: Victor Hugo</h5>
-                <h5>Gênero: Victor Hugo</h5>
-            </div>
-        </div>
-        <div class="item">
-            <div class="book">
-
-            </div>
-            <div class="description">
-                <h3>Os miseraveis</h3>
-                <h5>Autor: Victor Hugo</h5>
-                <h5>Gênero: Victor Hugo</h5>
-            </div>
-        </div>
-        <div class="item">
-            <div class="book">
-
-            </div>
-            <div class="description">
-                <h3>Os miseraveis</h3>
-                <h5>Autor: Victor Hugo</h5>
-                <h5>Gênero: Victor Hugo</h5>
+                <h3>{{ catalogItem.name }}</h3>
+                <h5>R${{ catalogItem.price }}</h5>
+                <h6>Autor: {{ catalogItem.author.name }}</h6>
+                <h6>ISBN: {{ catalogItem.isbn }}</h6>
+                <h6>Editora: {{ catalogItem.publisher.description }}</h6>
             </div>
         </div>
     </section>
