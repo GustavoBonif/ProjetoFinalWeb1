@@ -39,24 +39,6 @@
         color: white;
     }
 
-    .container{
-        margin: auto;
-        width: 95%;
-        height: 65vh;
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-    .item{
-        margin: 25px;
-        background-color: #868585;
-        text-align: center;
-        font-size: 1.5em;
-        width: 46.5%;
-        align-items: center;
-        text-align: left;
-    }   
-
     .container_search{
         margin: auto;
         height: 20vh;
@@ -88,10 +70,5 @@
         width: 30%;
         height: 100%;
     }
-    
-    .description{
-        width: 65%;
-        float: right;
-        margin-top: 0;
-    }
+
 </style>

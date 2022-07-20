@@ -7,14 +7,14 @@ import { RouterLink, RouterView } from "vue-router";
     <div class="header-logo">
     </div>
     <nav>
-      <RouterLink to="/" class="header-link">Home</RouterLink>
       <RouterLink to="/categorias" class="header-link">Categorias</RouterLink>
       <RouterLink to="/autores" class="header-link">Autores</RouterLink>
       <RouterLink to="/editoras" class="header-link">Editoras</RouterLink>
       <RouterLink to="/livros" class="header-link">Livros</RouterLink> 
     </nav>
     <div class="header-title">
-      Sistema de <br> Administração
+      Sistema <br> Administrador
+      
     </div>
   </header>
   <main>
