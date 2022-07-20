@@ -12,6 +12,9 @@ export default {
             "getShoppingCart",
             "removeFromCart",
         ]),
+        finishPurchase() {
+            alert("Pedido Realizado!");
+        }
     },
     async mounted() {
         try {
@@ -28,7 +31,7 @@ export default {
         } catch (e) {
             alert("Ooops! Algo de errado!");
         }
-    }
+    },
 }
 </script>
 
@@ -99,7 +102,7 @@ export default {
                 </td>
             </tr>
         </table>
-      <button class="endButton">Finalizar</button>
+      <button class="endButton" @click="finishPurchase()">Finalizar</button>
     </div>
   </section>
 </template>
